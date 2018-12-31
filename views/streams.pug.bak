@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  div
+    p 输入摄像头IP
+    p(id='demo')
+    // p #{data.streams[1].name}
+    - var values = [];
+    script.
+      //var i,x="";
+      $(document).ready(function() {
+        values = !{JSON.stringify(data)};
+        //for (i in values.streams){
+        //  x += values.streams[i].app + ' ' + values.streams[i].name + '<br>';
+        //}
+        //document.getElementById("demo").innerHTML = x;
+      });
+      for (i in values.streams){
+        x += values.streams[i].app + ' ' + values.streams[i].name + '<br>';
+      }
+      document.getElementById("demo").innerHTML = x;
