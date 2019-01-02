@@ -8,6 +8,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var ffmpegRouter = require('./routes/ffmpeg');
 var streamsRouter = require('./routes/streams');
+var phonestreamsRouter = require('./routes/phonestreams');
+var pcstreamsRouter = require('./routes/pcstreams');
 
 var app = express();
 
@@ -25,6 +27,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/ffmpeg', ffmpegRouter);
 app.use('/streams', streamsRouter);
+app.use('/phonestreams', phonestreamsRouter);
+app.use('/pcstreams', pcstreamsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

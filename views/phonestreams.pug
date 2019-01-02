@@ -1,0 +1,64 @@
+extends layout
+
+block content
+  div(class='container')
+    div(class='row')
+      div(class='col-sm-12',align='center')
+        h1 手机在线播放
+    div(class='row')
+      div(class='col-sm-12',align='center')
+        //- video-js(id='my-video',class='video-js',controls,preload='auto',width=1024,height=768)
+        //- video-js(id='my-video',class='video-js',controls,preload='auto',width=1024,height=768)
+          //- source(src="/live/livestream.m3u8",type="application/x-mpegURL")
+        p(id="streams")
+    
+  div
+    p(id="stream")
+    script.
+      function addSourceToVideo(element,src,type)
+      {
+        var source = document.createElement('source');
+        source.src =src;
+        source.type =type;
+        element.appendChild(source);
+      }
+      function insertVideo(id,src,type,width,height)
+      {
+        var vid = document.createElement("video-js");
+        vid.controls="controls";
+        vid.width = width;
+        vid.height = height;
+        vid.id = id;
+        vid.class = "video-js";
+        addSourceToVideo(vid,src,type);
+        document.getElementById("streams").appendChild(vid);
+      }
+      var x,i="/",j=".m3u8";
+      var values = !{data}
+      for (x in values.streams) {
+        i += values.streams[x].app + '/' + values.streams[x].name + j;
+        var video = document.getElementById("streams");
+        insertVideo(values.streams[x].name,i,"application/x-mpegURL",800,600); 
+        var vp = document.createElement('p');
+        document.getElementById("streams").appendChild(vp);
+        video = document.getElementById("streams");
+        var player = videojs(values.streams[x].name,{
+          controls: true,
+          width: 720,
+          height:480 
+        });
+        player.play();
+        document.getElementById("stream").innerHTML += i + '<br>';
+        // document.getElementById("stream").innerHTML += values.streams[x].app + '/' + values.streams[x].name + '<br>';
+         // values.streams[i].app + ' ' + values.streams[i].name + '<br>';
+        i = "/";
+      }
+    //- script.    
+    //-  var player2 = videojs("my-video",{
+    //-    controls: true,
+    //-    sources: [{
+    //-      src: '/live/livestream.m3u8',
+    //-      type: 'application/x-mpegURL'
+    //-    }]
+    //-  });
+    //-  player2.play();

@@ -12,4 +12,18 @@ html
     script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js')
     script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js')
   body
+    div(class='')
+      div(class='collapse',id='navbarToggleExternalContent')
+        div(class='bg-dark')
+          ul(class='nav')
+            li(class='nav-item')
+              a(class='nav-link',href='/') 首页
+            li(class='nav-item')
+              a(class='nav-link',href='streams') 视频广场
+            li(class='nav-item')
+              a(class='nav-link',href='ffmpeg') 通道配置
+    nav(class='navbar navbar-dark bg-dark')
+      a(class='navbar-brand',href='#') 导航
+      button(class='navbar-toggler',type='button',data-toggle='collapse',data-target='#navbarToggleExternalContent',aria-controls='navbarToggleExternalContent',aria-expanded='falsel,aria-label="Toggle navigation')
+        span(class='navbar-toggler-icon',align='right')
     block content
