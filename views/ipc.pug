@@ -3,17 +3,26 @@ extends layout
 block content
   div(class='container')
     div(class='row')
-      div(class='col-md-6')
-        p
-        div 摄像头
-        form(action='/ffmpeg/ipc',method='post')
-          p IP &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:  
-            input(type='text',name='IP',value='192.168.1.2')
-          p 帐&nbsp&nbsp&nbsp号: 
-            input(type='text',name='UserName',value='admin')
-          p 密&nbsp&nbsp&nbsp码: 
-            input(type='password',name='Password',value='p@ssw0rd')
-          p 直播名: 
-            input(type='text',name='IpcName',value='livestream')
-          input(type='submit')
-          p  说&nbsp&nbsp&nbsp明:摄像头IP、直播名不能重复，重复会覆盖之前同名的直播流 
+      div(class='col-md-12 bg-light text-center text-dark')
+        h1 摄像头信息
+      div(class='col-md-4 col-sm-1 bg-light text-dark')
+        h3 IP
+      div(class='col-md-4 col-sm-1 bg-light text-dark')
+        h3 账号
+      div(class='col-md-4 col-sm-1 bg-light text-dark')
+        h3 直播名
+      -  for(var i = 0; i < datas.length; i++)
+          if(i%2==0)
+            div(class='col-md-4 col-sm-1 bg-light text-dark')
+              span #{datas[i].ip}
+            div(class='col-md-4 col-sm-1 bg-light text-dark')
+              span #{datas[i].username}
+            div(class='col-md-4 col-sm-1 bg-light text-dark')
+              span #{datas[i].streamname}
+          else
+            div(class='col-md-4 col-sm-1 bg-secondary text-white')
+              span #{datas[i].ip}
+            div(class='col-md-4 col-sm-1 bg-secondary text-white')
+              span #{datas[i].username}
+            div(class='col-md-4 col-sm-1 bg-secondary text-white')
+              span #{datas[i].streamname}

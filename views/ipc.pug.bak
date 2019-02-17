@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  div(class='container')
+    div(class='row')
+      div(class='col-md-12 bg-light text-center text-dark')
+        h1 摄像头信息
+      div(class='col-md-3 col-sm-1 bg-light text-dark')
+        h3 编号
+      div(class='col-md-3 col-sm-1 bg-light text-dark')
+        h3 IP
+      div(class='col-md-3 col-sm-1 bg-light text-dark')
+        h3 账号
+      div(class='col-md-3 col-sm-1 bg-light text-dark')
+        h3 直播名
+      -  for(var i = 0; i < datas.length; i++)
+          if(i%2==0)
+            div(class='col-md-3 col-sm-1 bg-light text-dark')
+              !{datas[i].ip}
+            div(class='col-md-3 col-sm-1 bg-light text-dark')
+              !{datas[i].username}
+            div(class='col-md-3 col-sm-1 bg-light text-dark')
+              !{datas[i].streamname}
+         else
+           div(class='col-md-3 col-sm-1 bg-secondary text-white')
+             !{datas[i].ip}
+           div(class='col-md-3 col-sm-1 bg-secondary text-white')
+             !{datas[i].username}
+           div(class='col-md-3 col-sm-1 bg-secondary text-white')
+             !{datas[i].streamname}
