@@ -6,35 +6,50 @@ block content
       div(class='col-md-12 bg-light text-center text-dark')
         h1 摄像头信息
       div(class='col-md-12 bg-light text-right text-dark')
-        a(href="/addipc") 增加摄像头
+        a(href="/addipc", class="btn btn-primary") 增加摄像头
         span &nbsp&nbsp
-        a(href="/ipc/ipc") 全部直播
+        a(href="/ipc/ipc", class="btn btn-success") 全部直播
     div(class='row')
-      div(class='col-sm-3 col-md-3 bg-light text-dark')
+      div(class='col-sm-2 col-md-2 bg-light text-dark')
+        h3 ID
+      div(class='col-sm-2 col-md-2 bg-light text-dark')
         h3 IP
-      div(class='col-sm-3 col-md-3 bg-light text-dark')
+      div(class='col-sm-2 col-md-2 bg-light text-dark')
         h3 账号
-      div(class='col-sm-3 col-md-3 bg-light text-dark')
+      div(class='col-sm-2 col-md-2 bg-light text-dark')
         h3 直播名
-      div(class='col-sm-3 col-md-3 bg-light text-dark')
+      div(class='col-sm-2 col-md-2 bg-light text-dark')
+        h3 
+      div(class='col-sm-2 col-md-2 bg-light text-dark')
         h3 
       -  for(var i = 0; i < datas.length; i++)
           if(i%2==0)
-            div(class='col-sm-3 col-md-3 bg-light text-dark')
+            div(class='col-sm-2 col-md-2 bg-light text-dark')
+              span #{datas[i]._id}
+            div(class='col-sm-2 col-md-2 bg-light text-dark')
               span #{datas[i].ip}
-            div(class='col-sm-3 col-md-3 bg-light text-dark')
+            div(class='col-sm-2 col-md-2 bg-light text-dark')
               span #{datas[i].username}
-            div(class='col-sm-3 col-md-3 bg-light text-dark')
+            div(class='col-sm-2 col-md-2 bg-light text-dark')
               span #{datas[i].streamname}
-            div(class='col-sm-3 col-md-3 bg-light text-right text-dark')
-              a(href="") 删除
+            div(class='col-sm-2 col-md-2 bg-light text-dark')
+              span 
+            div(class='col-sm-2 col-md-2 bg-light text-right text-dark')
+              //- a(href='/delipc/' + datas[i]._id) 删除
+              form(action='/delipc/' + datas[i]._id,method='post')
+                button(type='submit',class="btn btn-danger") 删除
           else
-            div(class='col-sm-3 col-md-3 bg-secondary text-white')
+            div(class='col-sm-2 col-md-2 bg-secondary text-white')
+              span #{datas[i]._id}
+            div(class='col-sm-2 col-md-2 bg-secondary text-white')
               span #{datas[i].ip}
-            div(class='col-sm-3 col-md-3 bg-secondary text-white')
+            div(class='col-sm-2 col-md-2 bg-secondary text-white')
               span #{datas[i].username}
-            div(class='col-sm-3 col-md-3 bg-secondary text-white')
+            div(class='col-sm-2 col-md-2 bg-secondary text-white')
               span #{datas[i].streamname}
-            div(class='col-sm-3 col-md-3 bg-secondary text-right text-white')
-              a(href="") 删除
+            div(class='col-sm-2 col-md-2 bg-secondary text-white')
+              span 
+            div(class='col-sm-2 col-md-2 bg-secondary text-right text-white')
+              form(action='/delipc/' + datas[i]._id,method='post')
+                button(type='submit',class="btn btn-danger") 删除
 

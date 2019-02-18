@@ -1,17 +1,18 @@
 var express = require('express');
 var router = express.Router();
-var MongoClient = require('mongodb').MongoClient
+var MongoClient = require('mongodb').MongoClient;
+var objectId = require('mongodb').ObjectId;
 
 /* GET users listing. */
+/*
 router.get('/', function(req, res, next) {
-  res.render('addipc', { title: 'Express' });
+  res.send('ok');
 });
 
-router.post('/add', function(req, res, next) {
-  var IP = req.body.IP;
-  var UserName = req.body.UserName;
-  var Password = req.body.Password;
-  var StreamName = req.body.IpcName;
+*/
+router.post('/:id', function(req, res, next) {
+  var ID = req.params.id;
+  //console.log(ID)
 
   MongoClient.connect('mongodb://localhost:27017/ipcs', function (err, client) {
     if (err) throw err
@@ -19,18 +20,16 @@ router.post('/add', function(req, res, next) {
     var db = client.db('ipcs')
     //var myobj = { ip: IP, username: UserName, password: Password, streamname: StreamName };
     var myobj =new Object();
-    myobj.ip= IP;
-    myobj.username= UserName;
-    myobj.password= Password;
-    myobj.streamname= StreamName;
-  
-    db.collection('ipc').insertOne(myobj, function (err, result) {
+    myobj._id= objectId(ID);
+    db.collection('ipc').deleteOne(myobj, function (err, result) {
       if (err) throw err
 
       console.log("ok")
     });
   });
   res.redirect('/ipc');
+  //res.render('delipc', { title: 'Express' });
 });
+
 
 module.exports = router;
