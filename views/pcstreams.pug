@@ -33,7 +33,7 @@ block content
         addSourceToVideo(vid,src,type);
         document.getElementById("streams").appendChild(vid);
       }
-      var x,i="rtmp://192.168.1.248/";
+      var x,i="rtmp://192.168.2.173/";
       var values = !{data}
       for (x in values.streams) {
         i += values.streams[x].app + '/' + values.streams[x].name;
@@ -47,11 +47,11 @@ block content
           width: 800,
           height: 600
         });
-        player.play();
+        //- player.play();
         document.getElementById("stream").innerHTML += i + '<br>';
         //document.getElementById("stream").innerHTML += values.streams[x].app + '/' + values.streams[x].name + '<br>';
          //values.streams[i].app + ' ' + values.streams[i].name + '<br>';
-        i = "rtmp://192.168.1.248/";
+        i = "rtmp://192.168.2.173/";
       }
 //-    script.    
 //-      var player2 = videojs("my-video",{
